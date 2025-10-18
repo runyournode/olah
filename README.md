@@ -47,10 +47,29 @@ pip install --upgrade pip
 pip install -e .
 ```
 
+### Method 3: From source with `uv`
+
+1. Clone this repository
+```bash
+git clone https://github.com/vtuber-plan/olah.git
+cd olah
+```
+
+2. Install the Package
+```bash
+./install.sh
+```
+
+
 ## Quick Start
 Run the command in the console: 
 ```bash
 olah-cli
+```
+
+If you installed with `uv` and created a [configuration file](#more-configurations) in `./config.toml` you can also start the server with:
+```bash
+./start.sh
 ```
 
 Then set the Environment Variable `HF_ENDPOINT` to the mirror site (Here is http://localhost:8090).
