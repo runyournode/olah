@@ -3,18 +3,12 @@
 <head>
     <title>Olah HuggingFace Mirror</title>
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+        href="{{ url_for('static', path='vendor/semantic.min.css') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/default.min.css"
-        integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"
-        integrity="sha512-6yoqbrcLAHDWAdQmiRlHG4+m0g/CT/V9AGyxabG8j7Jk8j3r3K6due7oqpiRMZqcYe9WM2gPcaNNxnl2ux+3tA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='vendor/highlight-default.min.css') }}" />
+    <script src="{{ url_for('static', path='vendor/highlight.min.js') }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"
-        integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', path='vendor/clipboard.min.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             hljs.initHighlightingOnLoad();
@@ -61,11 +55,8 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
-
-    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+    <script src="{{ url_for('static', path='vendor/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url_for('static', path='vendor/semantic.min.js') }}"></script>
 
     <div class="page-container">
         <div class="ui container">
