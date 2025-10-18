@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+        href="{{ url_for('static', path='vendor/semantic.min.css') }}">
     <style>
         .ui.container {
             margin-top: 20px;
@@ -66,9 +66,8 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+    <script src="{{ url_for('static', path='vendor/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url_for('static', path='vendor/semantic.min.js') }}"></script>
 </body>
 
 </html>

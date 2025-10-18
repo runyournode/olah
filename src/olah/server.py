@@ -15,7 +15,7 @@ import time
 import traceback
 from typing import Annotated, List, Literal, Optional, Sequence, Tuple, Union
 from urllib.parse import urljoin
-from fastapi import FastAPI, Header, Request, Form
+from fastapi import Header, Request, Form
 from fastapi.responses import (
     FileResponse,
     HTMLResponse,
@@ -25,6 +25,8 @@ from fastapi.responses import (
 )
 from fastapi.templating import Jinja2Templates
 from fastapi_utils.tasks import repeat_every
+from fastapi.staticfiles import StaticFiles
+from fastapi_offline import FastAPIOffline
 
 import git
 import httpx
@@ -81,6 +83,7 @@ async def check_connection(url: str) -> bool:
                 method="HEAD",
                 url=url,
                 timeout=10,
+                follow_redirects=True,
             )
         if response.status_code != 200:
             return False
@@ -161,7 +164,7 @@ async def check_disk_usage() -> None:
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: "FastAPIOffline"):
     # TODO: Check repo cache path
     await check_hf_connection()
     await check_disk_usage()
@@ -172,8 +175,13 @@ async def lifespan(app: FastAPI):
 # Application
 # ======================
 code_file_path = os.path.abspath(__file__)
-app = FastAPI(lifespan=lifespan, debug=False)
+app = FastAPIOffline(lifespan=lifespan, debug=False)
 templates = Jinja2Templates(directory=os.path.join(OLAH_CODE_DIR, "static"))
+app.mount(
+    "/static",
+    StaticFiles(directory=os.path.join(OLAH_CODE_DIR, "static")),
+    name="static",
+)
 
 
 class AppSettings(BaseSettings):
